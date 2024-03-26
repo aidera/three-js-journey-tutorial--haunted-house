@@ -204,26 +204,42 @@ scene.add(ambientLight);
 // Directional light
 const moonLight = new THREE.DirectionalLight('#b9d5ff', 0.26);
 moonLight.castShadow = true;
+moonLight.shadow.mapSize.width = 256;
+moonLight.shadow.mapSize.height = 256;
+moonLight.shadow.camera.far = 15;
 moonLight.position.set(4, 5, -2);
 scene.add(moonLight);
 
 // Door light
 const doorLight = new THREE.PointLight('#ff7d46', 3, 7);
 doorLight.castShadow = true;
+doorLight.shadow.mapSize.width = 256;
+doorLight.shadow.mapSize.height = 256;
+doorLight.shadow.camera.far = 7;
 doorLight.position.set(0, 2.2, 2.7);
 house.add(doorLight);
 
 // Ghosts
 const ghost1 = new THREE.PointLight('#ff00ff', 6, 3);
 ghost1.castShadow = true;
+ghost1.shadow.mapSize.width = 256;
+ghost1.shadow.mapSize.height = 256;
+ghost1.shadow.camera.far = 7;
 scene.add(ghost1);
 
 const ghost2 = new THREE.PointLight('#00ffff', 6, 3);
 ghost2.castShadow = true;
+ghost2.shadow.mapSize.width = 256;
+ghost2.shadow.mapSize.height = 256;
+ghost2.shadow.camera.far = 7;
 scene.add(ghost2);
 
 const ghost3 = new THREE.PointLight('#ffff00', 6, 3);
 ghost3.castShadow = true;
+ghost3.shadow.mapSize.width = 256;
+ghost3.shadow.mapSize.height = 256;
+ghost3.shadow.camera.far = 7;
+
 scene.add(ghost3);
 
 /**
@@ -244,6 +260,7 @@ const renderer = new THREE.WebGLRenderer({ canvas: canvas });
 renderer.setSize(sizes.width, sizes.height);
 renderer.setClearColor('#262837');
 renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
 /**
  * ------------
